@@ -18,16 +18,25 @@ window.onscroll = function() {
 // Hamburger
 
 const hamburger = document.querySelector('#hamburger');
+const hamburgerLineTop = document.querySelector('#hamburger-line-top');
+const hamburgerLineMid = document.querySelector('#hamburger-line-mid');
+const hamburgerLineBottom = document.querySelector('#hamburger-line-bottom');
 const navMenu = document.querySelector('#nav-menu');
 
 hamburger.addEventListener('click', function() {
-  hamburger.classList.toggle('hamburger-active');
-  navMenu.classList.toggle('hidden');
+  if(!hamburger.classList.contains('hamburger-active') && navMenu.classList.contains('hidden')) {
+    hamburger.classList.add('hamburger-active');
+    navMenu.classList.remove('hidden');
+  } else {
+    hamburger.classList.remove('hamburger-active');
+    navMenu.classList.add('hidden');
+  }
 });
 
 // click out humberger
 window.addEventListener('click', function(e) {
-  if(e.target !== hamburger && e.target != navMenu) {
+  console.log(e.target);
+  if(e.target !== hamburger && e.target !== navMenu && e.target !== hamburgerLineTop && e.target !== hamburgerLineMid && e.target !== hamburgerLineBottom ) {
     hamburger.classList.remove('hamburger-active');
     navMenu.classList.add('hidden');
   }
